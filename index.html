@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Old Soja Residence | Uyo</title>
+    <meta name="description" content="Experience modern elegance at Old Soja Residence in Ewet Housing Estate, Uyo. Minimalist luxury, pool, and fine dining.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#1a1a1a',
+                        'brand-gold': '#d4af37',
+                        'brand-cream': '#f9f9f7',
+                        'brand-gray': '#888888',
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #f9f9f7;
+            color: #1a1a1a;
+        }
+        
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Booking Bar Styles */
+        .booking-bar-input {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 0.5rem 0;
+            width: 100%;
+        }
+        .booking-bar-input:focus {
+            outline: none;
+            border-bottom-color: #d4af37;
+        }
+        /* Date input icon adjustment */
+        .booking-bar-input::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
+
+        /* Review Carousel Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl md:text-3xl font-semibold tracking-widest text-white uppercase z-50">
+                Old Soja<span class="text-brand-gold">.</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex space-x-6 xl:space-x-8 items-center">
+                <a href="#about" class="text-xs uppercase tracking-widest text-white hover:text-brand-gold transition-colors">About</a>
+                <a href="#rooms" class="text-xs uppercase tracking-widest text-white hover:text-brand-gold transition-colors">Rooms</a>
+                <a href="#dining" class="text-xs uppercase tracking-widest text-white hover:text-brand-gold transition-colors">Dining</a>
+                <a href="#gallery" class="text-xs uppercase tracking-widest text-white hover:text-brand-gold transition-colors">Gallery</a>
+                <a href="#location" class="text-xs uppercase tracking-widest text-white hover:text-brand-gold transition-colors">Location</a>
+                <a href="#contact" class="px-6 py-2 border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-white transition-all uppercase text-xs tracking-widest">Book Now</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-white z-50 focus:outline-none">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-brand-dark flex flex-col justify-center items-center space-y-8 opacity-0 pointer-events-none transition-opacity duration-300">
+            <a href="#about" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">About</a>
+            <a href="#rooms" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">Rooms</a>
+            <a href="#dining" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">Dining</a>
+            <a href="#gallery" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">Gallery</a>
+            <a href="#location" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">Neighborhood</a>
+            <a href="#contact" class="text-2xl font-serif text-brand-gold mobile-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen hero-bg flex flex-col items-center justify-center px-4">
+        <div class="relative z-10 max-w-4xl mx-auto space-y-6 fade-up text-center">
+            <p class="text-brand-gold uppercase tracking-[0.3em] text-sm md:text-base">Ewet Housing Estate, Uyo</p>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-tight">
+                Refined Elegance <br>
+                <span class="italic font-light">In Every Detail</span>
+            </h1>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-32 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50 hidden md:block">
+            <i data-lucide="chevron-down" class="w-6 h-6"></i>
+        </div>
+    </header>
+
+    <!-- Booking Form Bar (Overlapping) -->
+    <div class="relative z-30 -mt-24 px-6 container mx-auto fade-up delay-100">
+        <div class="w-full max-w-5xl mx-auto bg-brand-dark/95 backdrop-blur-md p-6 md:p-8 shadow-2xl border-t-4 border-brand-gold">
+            <form onsubmit="event.preventDefault(); document.getElementById('contact').scrollIntoView();" class="grid grid-cols-1 md:grid-cols-4 gap-6 items-end">
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Check In</label>
+                    <input type="date" class="booking-bar-input text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Check Out</label>
+                    <input type="date" class="booking-bar-input text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Guests</label>
+                    <select class="booking-bar-input text-sm bg-transparent">
+                        <option class="text-black" value="1">1 Guest</option>
+                        <option class="text-black" value="2">2 Guests</option>
+                        <option class="text-black" value="3">3 Guests</option>
+                        <option class="text-black" value="4+">4+ Guests</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-brand-gold text-white py-3 uppercase tracking-widest text-xs font-bold hover:bg-white hover:text-brand-dark transition-colors">
+                    Check Availability
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="pt-32 pb-20 md:pt-40 md:pb-32 bg-brand-cream">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+                <div class="w-full md:w-1/2 fade-up relative">
+                    <div class="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-brand-gold hidden md:block"></div>
+                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1974&auto=format&fit=crop" alt="Minimalist Lobby" class="w-full h-[500px] object-cover grayscale hover:grayscale-0 transition-all duration-700 shadow-xl">
+                </div>
+                <div class="w-full md:w-1/2 space-y-6 fade-up">
+                    <h2 class="text-3xl md:text-5xl font-serif text-brand-dark">The Modern Sanctuary</h2>
+                    <p class="text-brand-gray leading-relaxed font-light">
+                        Located in the prestigious Ewet Housing Estate, Old Soja Residence redefines hospitality in Uyo. We merge minimalist design with the warmth of Nigerian hospitality. 
+                    </p>
+                    <p class="text-brand-gray leading-relaxed font-light">
+                        Whether you are here for business or a serene getaway, our spaces are curated to provide calm, comfort, and an undeniable sense of style.
+                    </p>
+                    <div class="grid grid-cols-2 gap-8 pt-6">
+                        <div>
+                            <h4 class="font-serif text-2xl text-brand-dark">24/7</h4>
+                            <p class="text-xs uppercase tracking-widest text-brand-gray">Concierge</p>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-2xl text-brand-dark">4.8</h4>
+                            <p class="text-xs uppercase tracking-widest text-brand-gray">Star Rating</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Embed Section -->
+    <section class="py-20 bg-brand-dark text-center px-6">
+        <div class="container mx-auto max-w-5xl fade-up">
+            <span class="text-brand-gold uppercase tracking-widest text-xs">Experience</span>
+            <h2 class="text-3xl md:text-5xl font-serif text-white mt-4 mb-12">A Visual Tour</h2>
+            
+            <div class="relative w-full aspect-video bg-gray-900 overflow-hidden group cursor-pointer shadow-2xl border border-gray-800">
+                <!-- Placeholder Image -->
+                <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-500">
+                
+                <!-- Play Button Overlay -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-20 h-20 rounded-full border-2 border-brand-gold flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-dark transition-all duration-300 scale-100 group-hover:scale-110">
+                        <i data-lucide="play" class="w-8 h-8 fill-current"></i>
+                    </div>
+                </div>
+                <div class="absolute bottom-8 left-0 right-0 text-white">
+                    <p class="uppercase tracking-widest text-sm">Watch The Film</p>
+                </div>
+                <!-- Note: In a real implementation, clicking this would replace the innerHTML with an iframe -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-up">
+                <span class="text-brand-gold uppercase tracking-widest text-xs">Accommodation</span>
+                <h2 class="text-4xl md:text-5xl font-serif text-brand-dark mt-4">Curated Living Spaces</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Room 1 -->
+                <div class="group fade-up hover:-translate-y-2 transition-transform duration-300">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=2070&auto=format&fit=crop" alt="Standard Room" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-8 border border-t-0 border-gray-100 bg-white">
+                        <h3 class="text-2xl font-serif text-brand-dark">Deluxe Double</h3>
+                        <p class="mt-2 text-sm text-brand-gray font-light">Perfect for the solo traveler or couple. Featuring a king-size bed and modern amenities.</p>
+                        <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
+                            <span class="text-brand-gold font-serif text-xl">₦55,000<span class="text-xs text-gray-400 font-sans">/night</span></span>
+                            <a href="#contact" class="text-xs uppercase tracking-wider text-brand-dark hover:text-brand-gold">Book</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room 2 -->
+                <div class="group fade-up hover:-translate-y-2 transition-transform duration-300">
+                    <div class="relative h-80 overflow-hidden">
+                        <div class="absolute top-4 right-4 bg-brand-gold text-white text-xs px-3 py-1 uppercase tracking-widest z-10">Popular</div>
+                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1974&auto=format&fit=crop" alt="Executive Suite" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-8 border border-t-0 border-gray-100 bg-white relative">
+                        <h3 class="text-2xl font-serif text-brand-dark">Executive Suite</h3>
+                        <p class="mt-2 text-sm text-brand-gray font-light">Spacious elegance with a dedicated workspace and private balcony offering city views.</p>
+                        <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
+                            <span class="text-brand-gold font-serif text-xl">₦85,000<span class="text-xs text-gray-400 font-sans">/night</span></span>
+                            <a href="#contact" class="text-xs uppercase tracking-wider text-brand-dark hover:text-brand-gold">Book</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room 3 -->
+                <div class="group fade-up hover:-translate-y-2 transition-transform duration-300">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop" alt="Presidential Suite" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-8 border border-t-0 border-gray-100 bg-white">
+                        <h3 class="text-2xl font-serif text-brand-dark">Presidential Suite</h3>
+                        <p class="mt-2 text-sm text-brand-gray font-light">The pinnacle of luxury. Two bedrooms, kitchenette, and an expansive living area.</p>
+                        <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
+                            <span class="text-brand-gold font-serif text-xl">₦150,000<span class="text-xs text-gray-400 font-sans">/night</span></span>
+                            <a href="#contact" class="text-xs uppercase tracking-wider text-brand-dark hover:text-brand-gold">Book</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dining Experience Section -->
+    <section id="dining" class="py-20 bg-brand-cream">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="w-full lg:w-1/3 fade-up">
+                    <span class="text-brand-gold uppercase tracking-widest text-xs">Culinary Delights</span>
+                    <h2 class="text-4xl md:text-5xl font-serif text-brand-dark mt-4 mb-6">The Taste of Uyo</h2>
+                    <p class="text-brand-gray font-light mb-6">
+                        Our in-house chefs craft a symphony of flavors, blending traditional Akwa Ibom delicacies with international haute cuisine. Enjoy your meal in our minimalist dining hall or by the poolside.
+                    </p>
+                    <ul class="space-y-3 mb-8 text-sm text-brand-dark">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-brand-gold rounded-full"></span> Farm-to-table freshness</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-brand-gold rounded-full"></span> Signature Cocktails</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-brand-gold rounded-full"></span> Private Dining Available</li>
+                    </ul>
+                    <a href="#contact" class="inline-block px-8 py-3 border border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white transition-colors uppercase tracking-widest text-xs">
+                        Reserve a Table
+                    </a>
+                </div>
+                <div class="w-full lg:w-2/3">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-4 fade-up delay-100">
+                            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2070&auto=format&fit=crop" class="w-full h-64 object-cover rounded-sm shadow-md hover:scale-105 transition-transform duration-500">
+                            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974&auto=format&fit=crop" class="w-full h-48 object-cover rounded-sm shadow-md hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="space-y-4 pt-8 fade-up delay-200">
+                            <img src="https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=2070&auto=format&fit=crop" class="w-full h-48 object-cover rounded-sm shadow-md hover:scale-105 transition-transform duration-500">
+                            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=2070&auto=format&fit=crop" class="w-full h-64 object-cover rounded-sm shadow-md hover:scale-105 transition-transform duration-500">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 fade-up">
+                <span class="text-brand-gold uppercase tracking-widest text-xs">Gallery</span>
+                <h2 class="text-4xl md:text-5xl font-serif text-brand-dark mt-4">Life at Old Soja</h2>
+            </div>
+            
+            <div class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+                <!-- Gallery Item 1 -->
+                <div class="relative group fade-up break-inside-avoid">
+                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2070&auto=format&fit=crop" class="w-full rounded-sm shadow-lg">
+                    <div class="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/20 transition-all duration-300"></div>
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="relative group fade-up break-inside-avoid">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop" class="w-full rounded-sm shadow-lg">
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="relative group fade-up break-inside-avoid">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2070&auto=format&fit=crop" class="w-full rounded-sm shadow-lg">
+                </div>
+                <!-- Gallery Item 4 -->
+                <div class="relative group fade-up break-inside-avoid">
+                    <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?q=80&w=2049&auto=format&fit=crop" class="w-full rounded-sm shadow-lg">
+                </div>
+                <!-- Gallery Item 5 -->
+                <div class="relative group fade-up break-inside-avoid">
+                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=2025&auto=format&fit=crop" class="w-full rounded-sm shadow-lg">
+                </div>
+                <!-- Gallery Item 6 -->
+                <div class="relative group fade-up break-inside-avoid">
+                    <img src="https://images.unsplash.com/photo-1512918760532-3ed0006faf67?q=80&w=2070&auto=format&fit=crop" class="w-full rounded-sm shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section (CAROUSEL UPDATED) -->
+    <section class="py-20 bg-brand-dark text-white relative">
+        <div class="container mx-auto px-6">
+            
+            <!-- Carousel Container -->
+            <div class="relative max-w-4xl mx-auto text-center fade-up" id="reviews-carousel">
+                <i data-lucide="quote" class="w-12 h-12 text-brand-gold opacity-50 mx-auto mb-8"></i>
+                
+                <!-- Slide 1 -->
+                <div class="review-slide animate-fade-in" id="slide-0">
+                    <h2 class="text-2xl md:text-4xl font-serif italic leading-relaxed mb-8">
+                        "An oasis of calm in Uyo. The attention to detail in the design is matched only by the attentiveness of the staff. Truly a five-star experience."
+                    </h2>
+                    <div class="flex flex-col items-center justify-center space-y-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&h=150&auto=format&fit=crop" alt="Nseobong E." class="w-16 h-16 rounded-full border-2 border-brand-gold object-cover shadow-lg">
+                        <div class="space-y-1">
+                            <p class="font-serif text-xl text-brand-gold">Nseobong E.</p>
+                            <p class="text-xs uppercase tracking-widest text-gray-400">Stayed in Executive Suite</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="review-slide hidden animate-fade-in" id="slide-1">
+                    <h2 class="text-2xl md:text-4xl font-serif italic leading-relaxed mb-8">
+                        "Dining here is a revelation. The fusion of local ingredients with continental presentation is unmatched in the city."
+                    </h2>
+                    <div class="flex flex-col items-center justify-center space-y-4">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&h=150&auto=format&fit=crop" alt="Chioma A." class="w-16 h-16 rounded-full border-2 border-brand-gold object-cover shadow-lg">
+                        <div class="space-y-1">
+                            <p class="font-serif text-xl text-brand-gold">Chioma A.</p>
+                            <p class="text-xs uppercase tracking-widest text-gray-400">Dining Guest</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="review-slide hidden animate-fade-in" id="slide-2">
+                    <h2 class="text-2xl md:text-4xl font-serif italic leading-relaxed mb-8">
+                        "The perfect base for my business trip. Fast internet, quiet rooms, and a very secure environment. Highly recommended."
+                    </h2>
+                    <div class="flex flex-col items-center justify-center space-y-4">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&h=150&auto=format&fit=crop" alt="David O." class="w-16 h-16 rounded-full border-2 border-brand-gold object-cover shadow-lg">
+                        <div class="space-y-1">
+                            <p class="font-serif text-xl text-brand-gold">David O.</p>
+                            <p class="text-xs uppercase tracking-widest text-gray-400">Business Traveler</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dots Navigation -->
+                <div class="flex justify-center gap-4 mt-12">
+                    <button onclick="setSlide(0)" class="w-3 h-3 rounded-full bg-brand-gold transition-all duration-300 hover:scale-125 focus:outline-none nav-dot" aria-label="Review 1"></button>
+                    <button onclick="setSlide(1)" class="w-3 h-3 rounded-full bg-gray-600 hover:bg-brand-gold transition-all duration-300 hover:scale-125 focus:outline-none nav-dot" aria-label="Review 2"></button>
+                    <button onclick="setSlide(2)" class="w-3 h-3 rounded-full bg-gray-600 hover:bg-brand-gold transition-all duration-300 hover:scale-125 focus:outline-none nav-dot" aria-label="Review 3"></button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Neighborhood / Location Section -->
+    <section id="location" class="py-20 bg-brand-cream">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-up">
+                <span class="text-brand-gold uppercase tracking-widest text-xs">Discover</span>
+                <h2 class="text-4xl md:text-5xl font-serif text-brand-dark mt-4">The Neighborhood</h2>
+                <p class="text-brand-gray mt-4 max-w-2xl mx-auto">Old Soja Residence is perfectly situated in Ewet Housing Estate, offering quick access to Akwa Ibom's finest landmarks.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Location 1 -->
+                <div class="group fade-up">
+                    <div class="relative h-64 overflow-hidden rounded-sm mb-4">
+                        <img src="https://images.unsplash.com/photo-1487466365202-1afdb86c764e?q=80&w=2073&auto=format&fit=crop" alt="Godswill Akpabio Stadium" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute bottom-0 left-0 bg-brand-dark px-4 py-2 text-white text-xs uppercase tracking-widest">5 Mins Away</div>
+                    </div>
+                    <h3 class="text-xl font-serif text-brand-dark">Godswill Akpabio Stadium</h3>
+                    <p class="text-sm text-brand-gray mt-2">World-class sporting facility often referred to as the Nest of Champions.</p>
+                </div>
+
+                <!-- Location 2 -->
+                <div class="group fade-up delay-100">
+                    <div class="relative h-64 overflow-hidden rounded-sm mb-4">
+                        <img src="https://images.unsplash.com/photo-1519567241046-7f570eee3d9f?q=80&w=2070&auto=format&fit=crop" alt="Ibom Tropicana" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute bottom-0 left-0 bg-brand-dark px-4 py-2 text-white text-xs uppercase tracking-widest">8 Mins Away</div>
+                    </div>
+                    <h3 class="text-xl font-serif text-brand-dark">Ibom Tropicana Mall</h3>
+                    <p class="text-sm text-brand-gray mt-2">Premier shopping and entertainment center with cinema and leisure park.</p>
+                </div>
+
+                <!-- Location 3 -->
+                <div class="group fade-up delay-200">
+                    <div class="relative h-64 overflow-hidden rounded-sm mb-4">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop" alt="Ibeno Beach" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute bottom-0 left-0 bg-brand-dark px-4 py-2 text-white text-xs uppercase tracking-widest">Day Trip (60 Mins)</div>
+                    </div>
+                    <h3 class="text-xl font-serif text-brand-dark">Ibeno Beach</h3>
+                    <p class="text-sm text-brand-gray mt-2">The longest sand beach in West Africa. Perfect for a serene day trip.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-brand-dark text-white pt-20 pb-10 border-t border-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-16 mb-16">
+                
+                <!-- Brand & Info -->
+                <div class="lg:w-1/3 space-y-8">
+                    <a href="#" class="font-serif text-3xl font-semibold tracking-widest text-white uppercase">
+                        Old Soja<span class="text-brand-gold">.</span>
+                    </a>
+                    <p class="text-gray-400 font-light text-sm leading-relaxed">
+                        A modern minimalist escape in the heart of Uyo. Experience the art of fine living.
+                    </p>
+                    <div class="space-y-4 text-gray-400 font-light text-sm pt-4">
+                        <p class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-brand-gold shrink-0"></i>
+                            Plot 7, G Line, off BG Bassey Avenue,<br>Ewet Housing Estate, Uyo
+                        </p>
+                        <p class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-5 h-5 text-brand-gold shrink-0"></i>
+                            <span>+234 800 123 4567</span>
+                        </p>
+                        <p class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-brand-gold shrink-0"></i>
+                            <span>reservations@oldsoja.com</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:w-2/3 bg-gray-900/50 p-8 rounded-sm border border-gray-800">
+                    <h4 class="font-serif text-2xl mb-6">Send us a Message</h4>
+                    <form onsubmit="event.preventDefault(); alert('Message sent!');" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-xs uppercase tracking-widest text-gray-500">Name</label>
+                                <input type="text" class="w-full bg-transparent border-b border-gray-700 py-2 focus:outline-none focus:border-brand-gold transition-colors">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs uppercase tracking-widest text-gray-500">Email</label>
+                                <input type="email" class="w-full bg-transparent border-b border-gray-700 py-2 focus:outline-none focus:border-brand-gold transition-colors">
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs uppercase tracking-widest text-gray-500">Subject</label>
+                            <select class="w-full bg-transparent border-b border-gray-700 py-2 focus:outline-none focus:border-brand-gold transition-colors text-gray-400">
+                                <option>Room Reservation Inquiry</option>
+                                <option>Event / Hall Booking</option>
+                                <option>Dining Reservation</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs uppercase tracking-widest text-gray-500">Message</label>
+                            <textarea rows="4" class="w-full bg-transparent border-b border-gray-700 py-2 focus:outline-none focus:border-brand-gold transition-colors"></textarea>
+                        </div>
+                        <button type="submit" class="px-8 py-3 bg-brand-gold text-white uppercase tracking-widest text-xs hover:bg-white hover:text-brand-dark transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 uppercase tracking-wider">
+                <p>&copy; 2025 Old Soja Residence. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-brand-gold transition-colors">Instagram</a>
+                    <a href="#" class="hover:text-brand-gold transition-colors">Facebook</a>
+                    <a href="#" class="hover:text-brand-gold transition-colors">Twitter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-brand-dark', 'shadow-md', 'py-2');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('bg-brand-dark', 'shadow-md', 'py-2');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        mobileBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+                mobileBtn.style.color = '#d4af37';
+            } else {
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                mobileBtn.style.color = 'white';
+            }
+        });
+
+        // Close mobile menu on link click
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                isMenuOpen = false;
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                mobileBtn.style.color = 'white';
+            });
+        });
+
+        // Intersection Observer for Fade Up Animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Reviews Carousel Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.review-slide');
+        const dots = document.querySelectorAll('.nav-dot');
+
+        function setSlide(index) {
+            // Hide all
+            slides.forEach(slide => slide.classList.add('hidden'));
+            dots.forEach(dot => {
+                dot.classList.remove('bg-brand-gold');
+                dot.classList.add('bg-gray-600');
+            });
+
+            // Show active
+            slides[index].classList.remove('hidden');
+            
+            // Highlight dot
+            dots[index].classList.remove('bg-gray-600');
+            dots[index].classList.add('bg-brand-gold');
+            
+            currentSlide = index;
+        }
+
+        // Auto advance slide every 5 seconds
+        setInterval(() => {
+            let next = (currentSlide + 1) % slides.length;
+            setSlide(next);
+        }, 5000);
+
+    </script>
+</body>
+</html>
